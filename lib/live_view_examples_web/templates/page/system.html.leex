@@ -1,0 +1,111 @@
+<div class="system-info">
+  <%= @system_info[:system_version] %>
+</div>
+
+<table>
+  <tr class="header">
+    <th>System / Arch</th>
+    <th>State</th>
+    <th>CPUs & Threads</th>
+    <th>State</th>
+    <th>Memory Usage</th>
+    <th>State</th>
+    <th>Statistics</th>
+    <th>State</th>
+  </tr>
+
+  <tr>
+    <td class="bold">System Version</td>
+    <td><%= @system_info[:otp_release] %></td>
+    <td class="bold">Logical CPUs</td>
+    <td><%= @system_info[:logical_processors] %></td>
+    <td class="bold">Total</td>
+    <td><%= @stats[:mem_allocated] %> (100%)</td>
+    <td class="bold">Smp Support</td>
+    <td><%= @system_info[:smp_support] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold">Erts Version</td>
+    <td><%= @system_info[:version] %></td>
+    <td class="bold">Online Logical CPUs</td>
+    <td><%= @system_info[:logical_processors_online] %></td>
+    <td class="bold">Processes</td>
+    <td><%= @stats[:mem_stats][:processes_used] %></td>
+    <td class="bold">Max Processes</td>
+    <td><%= @system_info[:proc_limit] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold">Emulator Wordsize</td>
+    <td><%= @system_info[:wordsize_internal] %></td>
+    <td class="bold">Available Logical CPUs</td>
+    <td><%= @system_info[:logical_processors_available] %></td>
+    <td class="bold">Atoms</td>
+    <td><%= @stats[:mem_stats][:atom] %></td>
+    <td class="bold">Processes</td>
+    <td><%= @stats[:proc_count] %></td>
+   </tr>
+
+   <tr>
+    <td class="bold">Process Wordsize</td>
+    <td><%= @system_info[:wordsize_external] %></td>
+    <td class="bold">Schedulers</td>
+    <td><%= @system_info[:schedulers_available] %></td>
+    <td class="bold">Binaries</td>
+    <td><%= @stats[:mem_stats][:binary] %></td>
+    <td class="bold">Run Queue</td>
+    <td><%= @stats[:runq_stats][:run_queue] %></td>
+  </tr>
+
+   <tr>
+    <td class="bold">Smp Support</td>
+    <td><%= @system_info[:smp_support] %></td>
+    <td class="bold">Online Schedulers</td>
+    <td><%= @system_info[:schedulers_online] %></td>
+    <td class="bold">Code</td>
+    <td><%= @stats[:mem_stats][:code] %></td>
+    <td class="bold">IO In</td>
+    <td><%= @stats[:io][:input_human] %></td>
+  </tr>
+
+   <tr>
+    <td class="bold">Thread Support</td>
+    <td><%= @system_info[:threads] %></td>
+    <td class="bold">Available Schedulers</td>
+    <td><%= @system_info[:schedulers_available] %></td>
+    <td class="bold">ETS</td>
+    <td><%= @stats[:mem_stats][:ets] %></td>
+    <td class="bold">IO Out</td>
+    <td><%= @stats[:io][:output_human] %></td>
+  </tr>
+
+   <tr>
+    <td class="bold">Compiled for: <%= @system_info[:system_architecture] %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<!--
+TODO
+|Allocator Type   | Current Multiblock Carriers  | Max Multiblock Carriers      | Current SingleBlock Carrie | Max Single Block Carriers  |
+|binary_alloc     | 0.3294 KB                    | 1.1670 KB                    | 0 B                         | 721.1172 KB               |
+|driver_alloc     | 0.5559 KB                    | 1.9755 KB                    | 0 B                         | 0 B                       |
+|eheap_alloc      | 4.8755 KB                    | 5.5935 KB                    | 1.0856 MB                   | 1.4498 MB                 |
+|ets_alloc        | 0.9044 KB                    | 0.9044 KB                    | 0 B                         | 0 B                       |
+|fix_alloc        | 0.2887 KB                    | 0.2635 KB                    | 0 B                         | 0 B                       |
+|ll_alloc         | 0.9312 KB                    | 0.9514 KB                    | 0 B                         | 0 B                       |
+|sl_alloc         | 0.1194 KB                    | 0.1493 KB                    | 0 B                         | 0 B                       |
+|std_alloc        | 1.0468 KB                    | 1.1181 KB                    | 0 B                         | 0 B                       |
+|temp_alloc       | 0 B                          | 15.0204 KB                   | 0 B                         | 0 B                       |
+|IN| Hits/Calls          | HitRat | IN| Hits/Calls          | HitRat | IN| Hits/Calls          | HitRat | IN| Hits/Calls         | HitRat |
+|01| 64157/88758         | 72.28% | 04| 0/0                 | 100.0% | 07| 0/0                 | 100.0% | 10| 0/0                | 100.0% |
+|02| 0/5                 | 00.00% | 05| 0/0                 | 100.0% | 08| 0/0                 | 100.0% | 11| 0/0                | 100.0% |
+|03| 1493/1991           | 74.99% | 06| 2/4                 | 50.00% | 09| 0/0                 | 100.0% | 12| 0/0                | 100.0% |
+-->

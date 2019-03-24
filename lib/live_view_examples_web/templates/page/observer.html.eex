@@ -1,0 +1,183 @@
+<div class="observer">
+  <%= live_render(@conn, LiveViewExamplesWeb.ObserverLive) %>
+</div>
+
+<style>
+body {
+  background-color: #eee8d5;
+}
+
+header {
+  margin-bottom: 0;
+  background-color: transparent;
+  margin-top: 20px;
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+header .madeby p {
+  margin-bottom: 0;
+  margin-left: 25px;
+}
+
+main.container {
+  max-width: 1200px;
+  padding: 0;
+}
+
+.observer {
+  width: 1200px;
+  background-color: #eee8d5;
+  min-height: 500px;
+}
+
+.controls {
+  width: 1200px;
+  background-color: #586e75;
+}
+
+.tabs {
+  float: left;
+}
+
+.controls button {
+  margin-bottom: 0;
+  border: none;
+}
+
+.interval-controls {
+  float: right;
+}
+
+.interval-controls .interval-val {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+}
+
+.interval-controls .btn-interval {
+  background-color: #859900;
+  font-size: 120%;
+}
+
+.view {
+  clear: both;
+}
+
+button {
+  background-color: #268bd2;
+  border-radius: 0;
+}
+
+button + button {
+  margin: 0;
+}
+
+button.active {
+  background-color: #d33682;
+  background-color: #586e75;
+}
+
+.system-info {
+  clear: both;
+  background-color: #586e75;
+  color: #eee8d5;
+  width: 1200px;
+  display: block;
+  border-bottom: 1px dashed #eee8d547;
+  padding: 10px;
+}
+
+table {
+  width: 1200px !important;
+  max-width: 1200px !important;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+tbody {
+  width: 1200px !important;
+  max-width: 1200px !important;
+}
+
+table td:first-child, th:first-child {
+  padding-left: 10px;
+}
+
+table th {
+  font-family: sans-serif;
+}
+
+th.sortable {
+  cursor: pointer;
+}
+
+th.sortable:hover {
+  background-color: #d33682;
+}
+
+table th.active {
+  background-color: #d33682;
+  min-width: 160px;
+}
+
+th.active.desc:after {
+  content: '🔽';
+  margin-left: 10px;
+}
+
+th.active.asc:after {
+  content: '🔼';
+  margin-left: 10px;
+}
+
+table td {
+  font-family: monospace;
+}
+
+td.bold {
+  font-weight: 700;
+  font-size: 80%;
+  font-family: sans-serif;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+table .double {
+  text-indent: -999999px;
+  width: 100px;
+}
+
+table .header {
+  background-color: #586e75;
+  color: #eee8d5;
+}
+
+.schedulers .scheduler {
+  border-bottom: 1px solid #2aa198;
+}
+
+/*
+Solarized Dark
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+*/
+</style>

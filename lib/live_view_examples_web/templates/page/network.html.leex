@@ -1,0 +1,39 @@
+<div class="system-info">
+  <%= @system_info[:system_version] %>
+</div>
+<table>
+  <tr>
+    <td class="bold">Byte Input</td>
+    <td><%= @stats[:io][:input_human] %></td>
+    <td class="bold">Byte Output</td>
+    <td><%= @stats[:io][:output_human] %></td>
+    <td class="bold">Total Input</td>
+    <td><%= @stats[:io][:total_input_human] %></td>
+    <td class="bold">Total Output</td>
+    <td><%= @stats[:io][:total_output_human] %></td>
+  </tr>
+</table>
+
+<table>
+  <tr class="header">
+    <th>No</th>
+    <th>Port</th>
+    <th
+      phx-click="set_ports_top_attr_recv_cnt"
+      class="sortable <%= @settings[:top_order] %> <%= if @settings[:top_ports_attribute] == :recv_cnt, do: "active" %>">
+      recv_cnt
+    </th>
+    <th
+      phx-click="set_ports_top_attr_send_cnt"
+      class="sortable <%= @settings[:top_order] %> <%= if @settings[:top_ports_attribute] == :send_cnt, do: "active" %>">
+      send_cnt
+    </th>
+    <th>output</th>
+    <th>input</th>
+    <th>queues</th>
+    <th>memory</th>
+    <th>Peername (ip:port)</th>
+  </tr>
+
+  <%= raw @stats[:port_top] %>
+</table>

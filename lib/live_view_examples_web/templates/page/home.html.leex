@@ -1,0 +1,146 @@
+<div class="system-info">
+  <%= @system_info[:system_version] %>
+</div>
+
+<table>
+  <tr class="header">
+    <th>System</th>
+    <th>Count / Limit</th>
+    <th>System Switch</th>
+    <th>Status</th>
+    <th>Memory Info</th>
+    <th>Size</th>
+    <th class="double"></th>
+  </tr>
+
+  <tr>
+    <td class="bold">Proc Count</td>
+    <td><%= @stats[:proc_count] %>/<%= @system_info[:proc_limit] %></td>
+    <td class="bold">Smp Support</td>
+    <td><%= @system_info[:smp_support] %></td>
+    <td class="bold">Allocated Mem</td>
+    <td colspan=2><%= @stats[:mem_allocated] %> (100%)</th>
+  </tr>
+
+  <tr>
+    <td class="bold">Port Count</td>
+    <td><%= @stats[:port_count] %>/<%= @system_info[:port_limit] %></td>
+    <td class="bold">Multi Scheduling</td>
+    <td><%= @system_info[:multi_scheduling] %></td>
+    <td class="bold">Used Mem</td>
+    <td colspan=2><%= @stats[:mem_used] %> (<%= @stats[:mem_used_perc] %>)</td>
+  </tr>
+
+  <tr>
+    <td class="bold">Atom Count</td>
+    <td><%= @stats[:atom_count] %>/<%= @system_info[:atom_limit] %></td>
+    <td class="bold">Logical Processors</td>
+    <td><%= @system_info[:logical_processors] %></td>
+    <td class="bold">Unused Mem</td>
+    <td colspan=2><%= @stats[:mem_unused] %> (<%= @stats[:mem_unused_perc] %>)</th>
+  </tr>
+
+  <tr class="header">
+    <th>Mem Type</th>
+    <th>Size</th>
+    <th>Mem Type</th>
+    <th>Size</th>
+    <th>IO/GC</th>
+    <th>Interval <%= @settings[:interval] %>ms</th>
+    <th class="double"></th>
+  </tr>
+
+  <tr>
+    <td class="bold">Total</td>
+    <td><%= @stats[:mem_stats][:total] %></td>
+    <td class="bold">Binary</td>
+    <td><%= @stats[:mem_stats][:binary] %></td>
+    <td class="bold">IO Output</td>
+    <td colspan=2><%= @stats[:io][:output_human] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold">Process</td>
+    <td><%= @stats[:mem_stats][:processes_used] %></td>
+    <td class="bold">Code</td>
+    <td><%= @stats[:mem_stats][:code] %></td>
+    <td class="bold">IO Input</td>
+    <td colspan=2><%= @stats[:io][:input_human] %></td>
+  </tr>
+  <tr>
+    <td class="bold">Atom</td>
+    <td><%= @stats[:mem_stats][:atom] %></td>
+    <td class="bold">Reductions</td>
+    <td><%= @stats[:reds_stats] %></td>
+    <td class="bold">GC Count</td>
+    <td colspan=2><%= @stats[:gc][:gcs] %></td>
+  </tr>
+  <tr>
+    <td class="bold">ETS</td>
+    <td><%= @stats[:mem_stats][:total] %></td>
+    <td class="bold">RunQueue / ErrorLoggerQueue</td>
+    <td><%= @stats[:runq_stats][:run_queue] %>/<%= @stats[:runq_stats][:error_logger_queue] %></td>
+    <td class="bold">GC Words Reclaimed</td>
+    <td colspan=2><%= @stats[:gc][:words] %></td>
+  </tr>
+</table>
+
+<table class="schedulers">
+  <tr class="header">
+  <th colspan="4">
+    Schedulers
+  </th>
+
+  </tr>
+  <%= for {_i, cols} <- @stats[:schedulers][:formatted] do %>
+    <tr>
+      <%= for {schedno, col} <- cols do %>
+        <td>
+          <span><%= schedno %> : <%= col %>%</span>
+          <div class="scheduler schedno-<%= schedno %>" style="width: <%= col %>%">
+          </div>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<table>
+  <tr class="header">
+    <th>No</th>
+    <th>PID</th>
+    <th
+      phx-click="set_top_attr_memory"
+      class="sortable <%= @settings[:top_order] %> <%= if @settings[:top_attribute] == :memory, do: "active" %>">
+      Memory
+    </th>
+    <th>Name or Initial Call</th>
+    <th
+      phx-click="set_top_attr_reductions"
+      class="sortable <%= @settings[:top_order] %> <%= if @settings[:top_attribute] == :reductions, do: "active" %>">
+      Reductions
+    </th>
+    <th>MsqQueue</th>
+    <th>Current Function</th>
+  </tr>
+
+  <%= for {%{
+      pid: pid,
+      stat: stat,
+      name: name,
+      reductions: reductions,
+      message_queue_len: message_queue,
+      current_function: current_function,
+      initial_call: initial_call
+    }, i} <- Enum.with_index(@stats[:process_top]) do %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td class="underline"><%= inspect(pid) %></td>
+      <td><%= stat %></td>
+      <td><%= name || inspect(initial_call) %> </td>
+      <td><%= reductions %></td>
+      <td><%= message_queue %></td>
+      <td><%= inspect(current_function) %></td>
+    </tr>
+  <% end %>
+</table>
