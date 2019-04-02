@@ -36,9 +36,7 @@ defmodule LiveViewExamples.MixProject do
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
       {:phoenix, git: "https://github.com/phoenixframework/phoenix.git", branch: "v1.4", override: true},
       {:phoenix_pubsub, "~> 1.1"},
-      {:observer_cli, "~> 1.4.1"},
       {:recon, "~> 2.3", override: true},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
@@ -54,10 +52,6 @@ defmodule LiveViewExamples.MixProject do
   #
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
-    [
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
-    ]
+    []
   end
 end
