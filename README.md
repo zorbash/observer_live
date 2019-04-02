@@ -28,3 +28,4 @@ Copyright (c) 2019 Dimitris Zorbas, MIT License.
 [observer_cli]: https://github.com/zhongwencool/observer_cli
 [phoenix]: https://github.com/phoenixframework/phoenix
 [demo]: https://liveview.zorbash.com
+[liveview]: https://github.com/phoenixframework/phoenix_live_view
