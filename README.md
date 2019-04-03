@@ -4,6 +4,8 @@ This is a port of [observer_cli][observer_cli] using phoenix and [LiveView][live
 
 :warning: It's still a work in progress and has not been tested in production.
 
+Blog post: [observer_live][observer_live]
+
 Demo: [Try it][demo]
 
 Video:
@@ -29,3 +31,4 @@ Copyright (c) 2019 Dimitris Zorbas, MIT License.
 [phoenix]: https://github.com/phoenixframework/phoenix
 [demo]: https://liveview.zorbash.com
 [liveview]: https://github.com/phoenixframework/phoenix_live_view
+[observer_live]: https://zorbash.com/post/observer-live/
