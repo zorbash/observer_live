@@ -12,6 +12,8 @@ Video:
 
 ![video](https://i.imgur.com/VVhUvMg.gif)
 
+For other LiveView examples and demos see [here](https://tefter.io/zorbash/lists/phoenix-liveview-examples).
+
 ## Development
 
 To run it locally:
