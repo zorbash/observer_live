@@ -92,6 +92,18 @@
   </tr>
 </table>
 
+<table>
+  <tr class="header">
+    <th>Allocator Type</th>
+    <th>Current Multiblock Carriers</th>
+    <th>Max Multiblock Carriers</th>
+    <th>Current SingleBlock Carriers</th>
+    <th>Max SingleBlock Carriers</th>
+  </tr>
+
+  <%= raw @stats[:allocators] %>
+</table>
+
 <!--
 TODO
 |Allocator Type   | Current Multiblock Carriers  | Max Multiblock Carriers      | Current SingleBlock Carrie | Max Single Block Carriers  |
@@ -104,6 +116,7 @@ TODO
 |sl_alloc         | 0.1194 KB                    | 0.1493 KB                    | 0 B                         | 0 B                       |
 |std_alloc        | 1.0468 KB                    | 1.1181 KB                    | 0 B                         | 0 B                       |
 |temp_alloc       | 0 B                          | 15.0204 KB                   | 0 B                         | 0 B                       |
+
 |IN| Hits/Calls          | HitRat | IN| Hits/Calls          | HitRat | IN| Hits/Calls          | HitRat | IN| Hits/Calls         | HitRat |
 |01| 64157/88758         | 72.28% | 04| 0/0                 | 100.0% | 07| 0/0                 | 100.0% | 10| 0/0                | 100.0% |
 |02| 0/5                 | 00.00% | 05| 0/0                 | 100.0% | 08| 0/0                 | 100.0% | 11| 0/0                | 100.0% |

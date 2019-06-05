@@ -19,6 +19,7 @@ defmodule LiveViewExamples.Tabs.Home do
     |> put_in([:stats, :gc], gc_stats(gc_stats))
     |> put_in([:stats, :schedulers], schedulers_stats(schedulers))
     |> put_in([:stats, :process_top], process_top(state))
+    |> put_in([:stats, :allocators], [])
   end
 
   def system_info do
@@ -49,7 +50,7 @@ defmodule LiveViewExamples.Tabs.Home do
       threads: :erlang.system_info(:threads),
       thread_pool_size: :erlang.system_info(:thread_pool_size),
       wordsize_internal: :erlang.system_info({:wordsize, :internal}),
-      wordsize_external: :erlang.system_info({:wordsize, :external}),
+      wordsize_external: :erlang.system_info({:wordsize, :external})
     }
   end
 
