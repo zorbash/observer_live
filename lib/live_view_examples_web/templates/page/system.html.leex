@@ -92,6 +92,89 @@
   </tr>
 </table>
 
+<table>
+  <tr class="header">
+    <th>Allocator Type</th>
+    <th>Current Multiblock Carriers</th>
+    <th>Max Multiblock Carriers</th>
+    <th>Current SingleBlock Carriers</th>
+    <th>Max Single Block Carriers</th>
+  </tr>
+
+  <tr>
+    <td class="bold"> binary_alloc </td>
+    <td><%= @system_info[:memory_allocators][:binary_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:binary_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:binary_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:binary_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> driver_alloc </td>
+    <td><%= @system_info[:memory_allocators][:driver_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:driver_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:driver_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:driver_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> eheap_alloc </td>
+    <td><%= @system_info[:memory_allocators][:eheap_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:eheap_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:eheap_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:eheap_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> ets_alloc </td>
+    <td><%= @system_info[:memory_allocators][:ets_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:ets_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:ets_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:ets_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> fix_alloc </td>
+    <td><%= @system_info[:memory_allocators][:fix_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:fix_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:fix_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:fix_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> ll_alloc </td>
+    <td><%= @system_info[:memory_allocators][:ll_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:ll_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:ll_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:ll_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> sl_alloc </td>
+    <td><%= @system_info[:memory_allocators][:sl_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:sl_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:sl_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:sl_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> std_alloc </td>
+    <td><%= @system_info[:memory_allocators][:std_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:std_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:std_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:std_alloc][:mmsbc] %></td>
+  </tr>
+
+  <tr>
+    <td class="bold"> temp_alloc </td>
+    <td><%= @system_info[:memory_allocators][:temp_alloc][:mmbcs] %></td>
+    <td><%= @system_info[:memory_allocators][:temp_alloc][:mmmbc] %></td>
+    <td><%= @system_info[:memory_allocators][:temp_alloc][:sbct] %></td>
+    <td><%= @system_info[:memory_allocators][:temp_alloc][:mmsbc] %></td>
+  </tr>
+
+</table>
+
 <!--
 TODO
 |Allocator Type   | Current Multiblock Carriers  | Max Multiblock Carriers      | Current SingleBlock Carrie | Max Single Block Carriers  |
@@ -104,6 +187,7 @@ TODO
 |sl_alloc         | 0.1194 KB                    | 0.1493 KB                    | 0 B                         | 0 B                       |
 |std_alloc        | 1.0468 KB                    | 1.1181 KB                    | 0 B                         | 0 B                       |
 |temp_alloc       | 0 B                          | 15.0204 KB                   | 0 B                         | 0 B                       |
+
 |IN| Hits/Calls          | HitRat | IN| Hits/Calls          | HitRat | IN| Hits/Calls          | HitRat | IN| Hits/Calls         | HitRat |
 |01| 64157/88758         | 72.28% | 04| 0/0                 | 100.0% | 07| 0/0                 | 100.0% | 10| 0/0                | 100.0% |
 |02| 0/5                 | 00.00% | 05| 0/0                 | 100.0% | 08| 0/0                 | 100.0% | 11| 0/0                | 100.0% |

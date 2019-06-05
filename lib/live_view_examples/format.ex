@@ -5,6 +5,15 @@ defmodule LiveViewExamples.Format do
   def number_to_human_size(size) when size < 1024 * 1024 * 1024 * 1024 do
     "#{Float.round(size / (1024 * 1024 * 1024), 4)} GB"
   end
+  def number_to_human_size(size) when size < 1024 * 1024 * 1024 * 1024 * 1024 do
+    "#{Float.round(size / (1024 * 1024 * 1024 * 1024), 4)} TB"
+  end
+  def number_to_human_size(size) when size < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 do
+    "#{Float.round(size / (1024 * 1024 * 1024 * 1024 * 1024), 4)} PB"
+  end
+  def number_to_human_size(size) when size < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 do
+    "#{Float.round(size / (1024 * 1024 * 1024 * 1024 * 1024 * 1024), 4)} EB"
+  end
   def number_to_human_size(size), do: "#{size} ??"
 
   def to_percentage(num) when num < 0.1, do: "#{Float.round(num * 100, 2)}%"
