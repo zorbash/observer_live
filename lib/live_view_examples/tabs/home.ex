@@ -2,18 +2,6 @@ defmodule LiveViewExamples.Tabs.Home do
   import LiveViewExamples.Format
 
   @top_attributes [:memory, :reductions]
-  @allocators [
-    :std_alloc,
-    :eheap_alloc,
-    :ets_alloc,
-    :temp_alloc,
-    :ll_alloc,
-    :sl_alloc,
-    :driver_alloc,
-    :binary_alloc,
-    :exec_alloc,
-    :fix_alloc
-  ]
 
   def collect(%{
     stats: %{
@@ -31,6 +19,7 @@ defmodule LiveViewExamples.Tabs.Home do
     |> put_in([:stats, :gc], gc_stats(gc_stats))
     |> put_in([:stats, :schedulers], schedulers_stats(schedulers))
     |> put_in([:stats, :process_top], process_top(state))
+    |> put_in([:stats, :allocators], [])
   end
 
   def system_info do
@@ -61,8 +50,7 @@ defmodule LiveViewExamples.Tabs.Home do
       threads: :erlang.system_info(:threads),
       thread_pool_size: :erlang.system_info(:thread_pool_size),
       wordsize_internal: :erlang.system_info({:wordsize, :internal}),
-      wordsize_external: :erlang.system_info({:wordsize, :external}),
-      memory_allocators: memory_allocators(:erlang.system_info(:allocator))
+      wordsize_external: :erlang.system_info({:wordsize, :external})
     }
   end
 
@@ -182,23 +170,6 @@ defmodule LiveViewExamples.Tabs.Home do
     |> put_in([:wall], new_wall)
     |> put_in([:formatted], format_schedulers(diff))
   end
-
-  defp memory_allocators({_, _, _, allocators}) do
-    format_allocators(allocators)
-  end
-
-  defp format_allocators([]), do: []
-  defp format_allocators([{key, value} | tail]) when key in @allocators do
-    formated_values =
-      value
-      |> Enum.map(fn
-        {k, v} when is_integer(v) -> {k, number_to_human_size(v)}
-        {k, v} -> {k, v}
-      end)
-
-    [{key, formated_values} | format_allocators(tail)]
-  end
-  defp format_allocators([head | tail]), do: [head | format_allocators(tail)]
 
   defp format_schedulers(wall) do
     schedulers = length(wall)
